@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Sissay Wube – Backend-focused Full-Stack Engineer specializing in Go, PostgreSQL, and microservices architecture with 6+ years of experience." />
+  <meta property="og:title" content="Sissay Wube | Software Engineer" />
+  <meta property="og:description"
+    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes." />
+  <meta name="theme-color" content="#080c14" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <title>Sissay Wube | Software Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="dark">
+
+  <!-- Animated Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ── NAVBAR ─────────────────────────── -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">&lt;SW /&gt;</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun icon-sun"></i>
+          <i class="fa-solid fa-moon icon-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Available for opportunities
+          </div>
+          <h1 class="hero-name">
+            Sissay<br>
+            <span class="gradient-text">Wube</span>
+          </h1>
+          <p class="hero-title">
+            <span id="typed-text"></span><span class="typed-cursor">|</span>
+          </p>
+          <p class="hero-summary">
+            Backend-focused Full-Stack Engineer with <strong>6+ years</strong> of expertise in Go, PostgreSQL,
+            and microservices architecture. Building robust, real-time, and scalable systems that
+            drive measurable business impact.
+          </p>
+          <div class="hero-actions">
+            <a href="#experience" class="btn-primary">
+              <i class="fa-solid fa-briefcase"></i>
+              View My Work
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i class="fa-solid fa-envelope"></i>
+              Get in Touch
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">6+</div>
+              <div class="stat-label">Years Exp.</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">20+</div>
+              <div class="stat-label">Microservices</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">12K</div>
+              <div class="stat-label">Txn / Month</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">90%</div>
+              <div class="stat-label">Test Coverage</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-ring">
+            <div class="avatar-inner">
+              <img src="assets/profile.jpg" alt="Sissay Wube" class="profile-img" />
+            </div>
+          </div>
+          <div class="hero-location">
+            <i class="fa-solid fa-location-dot"></i>
+            Addis Ababa, Ethiopia
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ──────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">/** About Me */</span>
+        <h2 class="section-title">The Engineer <span class="gradient-text">Behind the Code</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="about-card reveal">
+            <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div class="card-title">Real-Time Systems</div>
+            <div class="card-text">Built WebSocket-driven production monitoring used across 8+ factory lines, cutting
+              reporting time from 2 hours to under 5 minutes per shift.</div>
+          </div>
+          <div class="about-card reveal" style="transition-delay:0.1s">
+            <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="card-title">Microservices Architect</div>
+            <div class="card-text">Containerized 20+ services with Docker & Kubernetes, slashing deployment time from
+              45+ minutes to ~8 minutes via automated CI/CD pipelines.</div>
+          </div>
+          <div class="about-card reveal" style="transition-delay:0.2s">
+            <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="card-title">Business Impact</div>
+            <div class="card-text">Engineered sales systems processing 8,000–12,000 transactions monthly, boosting sales
+              team efficiency by ~35%.</div>
+          </div>
+        </div>
+
+        <div class="about-right reveal">
+          <p class="about-intro">
+            I'm a <strong>Backend-focused Full-Stack Engineer</strong> based in Addis Ababa, Ethiopia,
+            with over <span class="about-highlight">6 years of hands-on experience</span> designing and
+            shipping production-grade software that solves real business problems.
+          </p>
+          <p class="about-intro">
+            My core expertise sits at the intersection of <strong>high-performance Go services</strong>,
+            relational data modelling with <strong>PostgreSQL</strong>, and distributed architectures built
+            on <strong>Domain-Driven Design</strong> principles. I thrive in environments where engineering
+            excellence, system reliability, and business outcomes all matter equally.
+          </p>
+          <p class="about-intro">
+            From laying the DDD foundations of a digital banking platform at Milto Labs to leading
+            full-stack development of a real-time factory monitoring suite at Phibela Industrial, I bring
+            a proven ability to <span class="about-highlight">architect, build, and own systems end-to-end</span>.
+          </p>
+
+          <div class="contact-info">
+            <div class="contact-row">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a>
+            </div>
+            <div class="contact-row">
+              <i class="fa-solid fa-phone"></i>
+              <span>+251 92 145 9706</span>
+            </div>
+            <div class="contact-row">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Addis Ababa, Ethiopia</span>
+            </div>
+            <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="contact-row">
+              <i class="fa-brands fa-github"></i>
+              github.com/sissaywube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────── -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">// Technical Arsenal</span>
+        <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
+        <p class="section-desc">A deep toolkit refined across production systems, microservices, and full-stack web
+          development.</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-category cat-lang reveal">
+          <div class="cat-label">Languages</div>
+          <div class="cat-name">Programming Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Go (Expert)
+            </span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-category cat-back reveal" style="transition-delay: 0.05s">
+          <div class="cat-label">Backend</div>
+          <div class="cat-name">Frameworks &amp; Libraries</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Gin</span>
+            <span class="skill-tag">Echo</span>
+            <span class="skill-tag">Fiber</span>
+            <span class="skill-tag">Gorm</span>
+            <span class="skill-tag">Gorilla</span>
+          </div>
+        </div>
+
+        <div class="skill-category cat-front reveal" style="transition-delay: 0.1s">
+          <div class="cat-label">Frontend</div>
+          <div class="cat-name">UI Development</div>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Redux</span>
+            <span class="skill-tag">Material UI</span>
+          </div>
+        </div>
+
+        <div class="skill-category cat-db reveal" style="transition-delay: 0.15s">
+          <div class="cat-label">Databases &amp; Messaging</div>
+          <div class="cat-name">Data Stores</div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">CockroachDB</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">RabbitMQ</span>
+          </div>
+        </div>
+
+        <div class="skill-category cat-devops reveal" style="transition-delay: 0.2s">
+          <div class="cat-label">DevOps &amp; Infrastructure</div>
+          <div class="cat-name">Cloud &amp; Tooling</div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">Docker</span>
+            <span class="skill-tag expert">Kubernetes</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">WebSocket</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="skill-category cat-back reveal" style="transition-delay: 0.25s">
+          <div class="cat-label">Methodologies</div>
+          <div class="cat-name">Architecture &amp; Design</div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">Domain-Driven Design</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">RESTful APIs</span>
+            <span class="skill-tag">TDD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ─────────────────────── -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">/* Career History */</span>
+        <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
+        <p class="section-desc">6+ years building production-grade systems across fintech, manufacturing, and B2B
+          sectors.</p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Job 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><i class="fa-solid fa-industry"></i></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="job-title">Software Engineer</div>
+              <div class="job-period">Aug 2021 – Present</div>
+            </div>
+            <div class="job-company">
+              Phibela Industrial PLC
+              <span>· Addis Ababa, Ethiopia</span>
+            </div>
+            <ul class="job-bullets">
+              <li class="job-bullet">Led architecture and full-stack development of a real-time production monitoring
+                &amp; evaluation system used across <strong>8+ production lines</strong>, reducing manual reporting time
+                from ~2 hours to <strong>under 5 minutes per shift</strong>.</li>
+              <li class="job-bullet">Spearheaded a web-based sales management system processing <strong>8,000–12,000
+                  transactions monthly</strong>, increasing sales team efficiency by <strong>~35%</strong>.</li>
+              <li class="job-bullet">Designed and implemented a real-time WebSocket notification system delivering
+                <strong>sub-second alerts</strong> to 50+ users for critical factory events.
+              </li>
+              <li class="job-bullet">Containerized <strong>20+ microservices</strong> with Docker and deployed to
+                Kubernetes, reducing deployment time from 45+ minutes to <strong>~8 minutes</strong> via CI/CD
+                pipelines.</li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">WebSocket</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Kubernetes</span>
+              <span class="tech-badge">CI/CD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><i class="fa-solid fa-bolt"></i></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="job-title">Backend Software Engineer (Contract)</div>
+              <div class="job-period">Feb 2021 – May 2021</div>
+            </div>
+            <div class="job-company">
+              Two F Times Trading PLC
+              <span>· Addis Ababa, Ethiopia</span>
+            </div>
+            <ul class="job-bullets">
+              <li class="job-bullet">Architected and developed highly configurable <strong>RESTful APIs in Go</strong>
+                (Gin, Echo, Gorm) to power responsive, client-facing business solutions.</li>
+              <li class="job-bullet">Containerized backend services with Docker and constructed <strong>Kubernetes-ready
+                  images</strong> enabling rapid and scalable deployments.</li>
+              <li class="job-bullet">Delivered a fully functional, <strong>production-ready backend system from
+                  scratch</strong> within an aggressive 3-month timeline.</li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">Gin</span>
+              <span class="tech-badge">Echo</span>
+              <span class="tech-badge">Gorm</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="job-title">Backend Software Engineer</div>
+              <div class="job-period">Feb 2020 – Jan 2021</div>
+            </div>
+            <div class="job-company">
+              Milto Labs PLC
+              <span>· Addis Ababa, Ethiopia</span>
+            </div>
+            <ul class="job-bullets">
+              <li class="job-bullet">Designed and implemented microservices for a <strong>digital banking
+                  platform</strong> using Domain-Driven Design, Go, RabbitMQ, PostgreSQL, and MongoDB.</li>
+              <li class="job-bullet">Wrote high-performance, well-documented code that consistently passed
+                <strong>strict code reviews and security standards</strong>.
+              </li>
+              <li class="job-bullet">Achieved <strong>&gt;90% test coverage</strong> on core services through
+                comprehensive unit and integration testing.</li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">DDD</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">RabbitMQ</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ──────────────────────── -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">// Academic Background</span>
+        <h2 class="section-title">Education &amp; <span class="gradient-text">Foundation</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="edu-degree">Bachelor of Science in Computer Science</div>
+        <div class="edu-school">Addis Ababa University</div>
+        <div class="edu-location">Addis Ababa, Ethiopia</div>
+        <div class="edu-period">2015 – 2019</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">/* Get In Touch */</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Work Together</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-wrapper">
+        <p class="contact-cta-text reveal">
+          Whether you have a role to discuss, a project to collaborate on, or just want to connect —
+          my inbox is always open. I'm particularly interested in opportunities involving
+          <strong>Go, distributed systems, and real-time architectures</strong>.
+        </p>
+
+        <div class="contact-cards reveal">
+          <a href="mailto:sissay440@gmail.com" class="contact-card">
+            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">sissay440@gmail.com</div>
+          </a>
+          <a href="tel:+251921459706" class="contact-card">
+            <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-card-label">Phone</div>
+            <div class="contact-card-value">+251 92 145 9706</div>
+          </a>
+          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-card-icon"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-value">sissay-wube</div>
+          </a>
+        </div>
+
+        <div class="social-links reveal">
+          <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://sissaywube.github.io/" target="_blank" rel="noopener" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+            </svg>
+            Portfolio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────── -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2025 <a href="#hero">Sissay Wube</a>. All rights reserved.</span>
+      <span>Built with ❤️ · <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
