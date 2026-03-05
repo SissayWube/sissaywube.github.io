@@ -176,9 +176,10 @@ function setupHamburger() {
   const navLinks = document.getElementById('nav-links');
 
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
     const spans = hamburger.querySelectorAll('span');
-    if (navLinks.classList.contains('open')) {
+    if (isOpen) {
       spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
       spans[1].style.opacity = '0';
       spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
@@ -280,11 +281,14 @@ function updateFooterYear() {
 // ── Years of Experience Automation ─────────
 function updateYearsOfExperience() {
   const yearsEl = document.getElementById('years-exp');
-  if (yearsEl) {
-    const careerStart = new Date(2020, 1); // Feb 2020
+  const statYearsEl = document.querySelector('.stat-value[data-target="6"]'); // Update the stats counter too
+  if (yearsEl || statYearsEl) {
+    const careerStart = new Date(2018, 5); // June 2018 (Post-grad / Freelance starts)
     const now = new Date();
     const years = Math.floor((now - careerStart) / (365.25 * 24 * 60 * 60 * 1000));
-    yearsEl.textContent = years;
+    
+    if (yearsEl) yearsEl.textContent = years;
+    if (statYearsEl) statYearsEl.setAttribute('data-target', years);
   }
 }
 
