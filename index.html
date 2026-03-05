@@ -29,6 +29,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="nav-cta">Hire Me</a></li>
@@ -63,18 +64,23 @@
             <span id="typed-text"></span><span class="typed-cursor">|</span>
           </p>
           <p class="hero-summary">
-            Backend-focused Full-Stack Engineer with <strong>6+ years</strong> of expertise in Go, PostgreSQL,
+            Backend-focused Full-Stack Engineer with <strong><span id="years-exp">6</span>+ years</strong> of expertise
+            in Go, PostgreSQL,
             and microservices architecture. Building robust, real-time, and scalable systems that
             drive measurable business impact.
           </p>
           <div class="hero-actions">
-            <a href="#experience" class="btn-primary">
+            <a href="#projects" class="btn-primary">
               <i class="fa-solid fa-briefcase"></i>
               View My Work
             </a>
             <a href="#contact" class="btn-secondary">
               <i class="fa-solid fa-envelope"></i>
               Get in Touch
+            </a>
+            <a href="assets/Sissay_Wube_Resume.pdf" download class="btn-secondary" aria-label="Download resume">
+              <i class="fa-solid fa-download"></i>
+              Resume
             </a>
           </div>
 
@@ -101,7 +107,8 @@
         <div class="hero-visual">
           <div class="avatar-ring">
             <div class="avatar-inner">
-              <img src="assets/profile.jpg" alt="Sissay Wube" class="profile-img" />
+              <img src="assets/profile.jpg" alt="Sissay Wube – Backend-focused Full-Stack Software Engineer"
+                class="profile-img" loading="lazy" />
             </div>
           </div>
           <div class="hero-location">
@@ -224,8 +231,20 @@
           <div class="cat-label">Backend</div>
           <div class="cat-name">Frameworks &amp; Libraries</div>
           <div class="skill-tags">
-            <span class="skill-tag">Gin</span>
-            <span class="skill-tag">Echo</span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Gin
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Echo
+            </span>
+            <span class="skill-tag">NodeJS</span>
+            <span class="skill-tag">Express</span>
             <span class="skill-tag">Fiber</span>
             <span class="skill-tag">Gorm</span>
             <span class="skill-tag">Gorilla</span>
@@ -246,12 +265,32 @@
           <div class="cat-label">Databases &amp; Messaging</div>
           <div class="cat-name">Data Stores</div>
           <div class="skill-tags">
-            <span class="skill-tag expert">PostgreSQL</span>
-            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              PostgreSQL
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              MongoDB
+            </span>
             <span class="skill-tag">Redis</span>
             <span class="skill-tag">CockroachDB</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">RabbitMQ</span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              MySQL
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              RabbitMQ
+            </span>
           </div>
         </div>
 
@@ -259,8 +298,18 @@
           <div class="cat-label">DevOps &amp; Infrastructure</div>
           <div class="cat-name">Cloud &amp; Tooling</div>
           <div class="skill-tags">
-            <span class="skill-tag expert">Docker</span>
-            <span class="skill-tag expert">Kubernetes</span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Docker
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Kubernetes
+            </span>
             <span class="skill-tag">CI/CD</span>
             <span class="skill-tag">WebSocket</span>
             <span class="skill-tag">Git</span>
@@ -272,10 +321,127 @@
           <div class="cat-label">Methodologies</div>
           <div class="cat-name">Architecture &amp; Design</div>
           <div class="skill-tags">
-            <span class="skill-tag expert">Domain-Driven Design</span>
-            <span class="skill-tag">Microservices</span>
-            <span class="skill-tag">RESTful APIs</span>
-            <span class="skill-tag">TDD</span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Domain-Driven Design
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Microservices
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              RESTful APIs
+            </span>
+            <span class="skill-tag expert">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              TDD
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ──────────────────────── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">// Featured Work</span>
+        <h2 class="section-title">Key <span class="gradient-text">Projects</span></h2>
+        <p class="section-desc">Production systems I've architected and built, delivering measurable business outcomes.
+        </p>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="project-content">
+            <h3 class="project-title">Real-Time Production Monitoring</h3>
+            <p class="project-desc">WebSocket-driven factory monitoring system used across <strong>8+ production
+                lines</strong>, cutting manual reporting from ~2 hours to <strong>under 5 minutes</strong> per shift.
+            </p>
+            <div class="project-impact">
+              <span class="impact-badge"><i class="fa-solid fa-bolt"></i> 95% time reduction</span>
+              <span class="impact-badge"><i class="fa-solid fa-users"></i> 50+ concurrent users</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">WebSocket</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.1s">
+          <div class="project-icon"><i class="fa-solid fa-cash-register"></i></div>
+          <div class="project-content">
+            <h3 class="project-title">Sales Management System</h3>
+            <p class="project-desc">Web-based platform processing <strong>8,000–12,000 transactions monthly</strong>,
+              boosting sales team efficiency by <strong>~35%</strong> with automated workflows and real-time analytics.
+            </p>
+            <div class="project-impact">
+              <span class="impact-badge"><i class="fa-solid fa-arrow-trend-up"></i> 35% efficiency gain</span>
+              <span class="impact-badge"><i class="fa-solid fa-database"></i> 12K txn/month</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.2s">
+          <div class="project-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="project-content">
+            <h3 class="project-title">Digital Banking Platform</h3>
+            <p class="project-desc">Microservices for a <strong>digital banking platform</strong> using Domain-Driven
+              Design, achieving <strong>&gt;90% test coverage</strong> across core services with strict security
+              compliance.</p>
+            <div class="project-impact">
+              <span class="impact-badge"><i class="fa-solid fa-shield-halved"></i> 90%+ test coverage</span>
+              <span class="impact-badge"><i class="fa-solid fa-cubes"></i> DDD architecture</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">RabbitMQ</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.3s">
+          <div class="project-icon"><i class="fa-solid fa-gears"></i></div>
+          <div class="project-content">
+            <h3 class="project-title">Microservices CI/CD Pipeline</h3>
+            <p class="project-desc">Containerized <strong>20+ microservices</strong> with Docker and deployed to
+              Kubernetes, slashing deployment time from 45+ minutes to <strong>~8 minutes</strong> via automated
+              pipelines.</p>
+            <div class="project-impact">
+              <span class="impact-badge"><i class="fa-solid fa-rocket"></i> 82% faster deploys</span>
+              <span class="impact-badge"><i class="fa-solid fa-cubes"></i> 20+ services</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Kubernetes</span>
+              <span class="tech-badge">CI/CD</span>
+              <span class="tech-badge">Go</span>
+            </div>
           </div>
         </div>
 
@@ -453,14 +619,16 @@
         </div>
 
         <div class="social-links reveal">
-          <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="social-link">
+          <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="social-link"
+            aria-label="Visit Sissay Wube's GitHub profile">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path
                 d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
             </svg>
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="social-link">
+          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="social-link"
+            aria-label="Visit Sissay Wube's LinkedIn profile">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
               <rect x="2" y="9" width="4" height="12" />
@@ -468,7 +636,8 @@
             </svg>
             LinkedIn
           </a>
-          <a href="https://sissaywube.github.io/" target="_blank" rel="noopener" class="social-link">
+          <a href="https://sissaywube.github.io/" target="_blank" rel="noopener" class="social-link"
+            aria-label="Visit Sissay Wube's portfolio website">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10" />
               <line x1="2" y1="12" x2="22" y2="12" />
@@ -484,7 +653,7 @@
   <!-- ── FOOTER ─────────────────────────── -->
   <footer>
     <div class="container footer-inner">
-      <span>© 2025 <a href="#hero">Sissay Wube</a>. All rights reserved.</span>
+      <span>© <span id="current-year">2025</span> <a href="#hero">Sissay Wube</a>. All rights reserved.</span>
       <span>Built with ❤️ · <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a></span>
     </div>
   </footer>

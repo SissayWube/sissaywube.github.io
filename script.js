@@ -54,7 +54,8 @@ function resizeCanvas() {
 
 function createParticles() {
   particles = [];
-  const count = Math.floor((canvas.width * canvas.height) / 18000);
+  const isMobile = window.innerWidth < 768;
+  const count = Math.floor((canvas.width * canvas.height) / (isMobile ? 28000 : 18000));
   const theme = document.body.getAttribute('data-theme') || 'dark';
 
   for (let i = 0; i < count; i++) {
@@ -158,6 +159,15 @@ function handleReveal() {
       setTimeout(() => item.classList.add('visible'), idx * 80);
     }
   });
+
+  // Project cards
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
+      card.classList.add('visible');
+    }
+  });
 }
 
 // ── Hamburger Menu ─────────────────────────
@@ -259,8 +269,30 @@ function setupThemeToggle() {
   });
 }
 
+// ── Footer Year Automation ─────────────────
+function updateFooterYear() {
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+}
+
+// ── Years of Experience Automation ─────────
+function updateYearsOfExperience() {
+  const yearsEl = document.getElementById('years-exp');
+  if (yearsEl) {
+    const careerStart = new Date(2020, 1); // Feb 2020
+    const now = new Date();
+    const years = Math.floor((now - careerStart) / (365.25 * 24 * 60 * 60 * 1000));
+    yearsEl.textContent = years;
+  }
+}
+
 // ── Init ───────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  updateFooterYear();
+  updateYearsOfExperience();
+
   // Typed effect
   typedEl = document.getElementById('typed-text');
   setTimeout(typeLoop, 600);
