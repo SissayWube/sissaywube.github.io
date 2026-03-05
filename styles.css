@@ -22,6 +22,11 @@
   --accent-grad2: #ff8533;
   /* Overridden to solid color */
 
+  --accent-teal: #00d4aa;
+  /* Adding for reference if used, but prioritizing orange */
+  --accent-blue: #ff6b00;
+  /* Redirecting blue references to orange */
+
   --text-primary: #ffffff;
   --text-secondary: #a0a0aa;
   --text-muted: #666670;
@@ -30,6 +35,8 @@
   --border-hover: rgba(255, 107, 0, 0.3);
   --glow-primary: 0 0 30px rgba(255, 107, 0, 0.15);
   --glow-secondary: 0 0 40px rgba(255, 133, 51, 0.1);
+  --glow-teal: 0 0 30px rgba(0, 212, 170, 0.15);
+  --glow-blue: 0 0 30px rgba(255, 107, 0, 0.15);
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -51,6 +58,8 @@
   --accent-secondary: #ff8533;
   --accent-grad: #ff6b00;
   --accent-grad2: #ff8533;
+  --accent-teal: #00a886;
+  --accent-blue: #ff6b00;
 
   --text-primary: #111111;
   --text-secondary: #444444;
@@ -60,6 +69,8 @@
   --border-hover: rgba(255, 107, 0, 0.2);
   --glow-primary: 0 4px 14px rgba(255, 107, 0, 0.15);
   --glow-secondary: 0 4px 14px rgba(255, 107, 0, 0.08);
+  --glow-teal: 0 4px 14px rgba(0, 212, 170, 0.1);
+  --glow-blue: 0 4px 14px rgba(255, 107, 0, 0.1);
 }
 
 
@@ -108,7 +119,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-blue);
+  background: var(--accent-primary);
   border-radius: 3px;
 }
 
@@ -433,7 +444,7 @@ section {
 .hero-stats {
   display: flex;
   gap: 36px;
-  margin-top: 52px;
+  margin-top: 36px;
   animation: fadeInUp 0.6s 0.5s ease both;
 }
 
@@ -518,12 +529,10 @@ section {
 }
 
 /* Scroll Indicator */
-/* Centered scroll indicator at bottom */
 .scroll-indicator {
   position: absolute;
-  bottom: 36px;
+  bottom: 24px;
   left: 50%;
-  bottom: 36px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -532,7 +541,6 @@ section {
   animation: fadeInUp 1s 0.8s ease both;
   z-index: 10;
 }
-
 
 .scroll-indicator a {
   display: flex;
@@ -584,7 +592,7 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--accent-teal);
+  color: var(--accent-primary);
   margin-bottom: 14px;
   font-family: 'JetBrains Mono', monospace;
 }
@@ -644,10 +652,10 @@ section {
 }
 
 .about-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--accent-primary);
   background: var(--bg-card-hover);
   transform: translateY(-4px);
-  box-shadow: var(--glow-teal);
+  box-shadow: var(--glow-primary);
 }
 
 .card-icon {
@@ -689,7 +697,7 @@ section {
 }
 
 .about-highlight {
-  color: var(--accent-teal);
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
@@ -1440,15 +1448,7 @@ footer a:hover {
 }
 
 /* ── RESPONSIVE ─────────────────────────────── */
-  @media (max-width: 900px) {
-    .hero-stats {
-      margin-right: 0;
-    }
-    .scroll-indicator {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%);
-    }
+@media (max-width: 900px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1493,31 +1493,6 @@ footer a:hover {
 
   .edu-card {
     padding: 36px 28px;
-  }
-  /* Responsive fix for scroll text and KPIs overlap */
-  @media (max-width: 600px) {
-    .hero-stats {
-      margin-right: 0;
-    }
-    .scroll-indicator {
-      position: static;
-      margin: 32px auto 0 auto;
-      transform: none;
-      right: auto;
-      left: auto;
-    }
-      /* Fix scroll indicator overlap on small screens */
-      .scroll-indicator {
-        position: static;
-        margin: 32px auto 0 auto;
-        transform: none;
-      }
-      .hero-content {
-        margin-bottom: 0;
-      }
-      .hero-stats {
-        margin-bottom: 0;
-      }
   }
 }
 

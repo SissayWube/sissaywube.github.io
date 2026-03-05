@@ -86,19 +86,19 @@
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-value">6+</div>
+              <div class="stat-value" data-target="6" data-suffix="+">0</div>
               <div class="stat-label">Years Exp.</div>
             </div>
             <div class="stat-item">
-              <div class="stat-value">20+</div>
+              <div class="stat-value" data-target="20" data-suffix="+">0</div>
               <div class="stat-label">Microservices</div>
             </div>
             <div class="stat-item">
-              <div class="stat-value">12K</div>
+              <div class="stat-value" data-target="12" data-suffix="K">0</div>
               <div class="stat-label">Txn / Month</div>
             </div>
             <div class="stat-item">
-              <div class="stat-value">90%</div>
+              <div class="stat-value" data-target="90" data-suffix="%">0</div>
               <div class="stat-label">Test Coverage</div>
             </div>
           </div>
@@ -121,8 +121,9 @@
     </div>
 
     <div class="scroll-indicator">
-      <span><i class="fa-solid fa-computer-mouse"></i></span>
-      <div class="scroll-line"></div>
+      <a href="#about" aria-label="Scroll down">
+        <div class="mouse"></div>
+      </a>
     </div>
   </section>
 
