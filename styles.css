@@ -434,6 +434,7 @@ section {
   display: flex;
   gap: 36px;
   margin-top: 52px;
+  margin-right: 80px; /* Prevent overlap with scroll indicator */
   animation: fadeInUp 0.6s 0.5s ease both;
 }
 
@@ -518,17 +519,20 @@ section {
 }
 
 /* Scroll Indicator */
+/* Centered scroll indicator at bottom */
 .scroll-indicator {
   position: absolute;
-  bottom: 36px;
   left: 50%;
+  bottom: 36px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   animation: fadeInUp 1s 0.8s ease both;
+  z-index: 10;
 }
+
 
 .scroll-indicator span {
   font-size: 0.72rem;
@@ -1422,7 +1426,15 @@ footer a:hover {
 }
 
 /* ── RESPONSIVE ─────────────────────────────── */
-@media (max-width: 900px) {
+  @media (max-width: 900px) {
+    .hero-stats {
+      margin-right: 0;
+    }
+    .scroll-indicator {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1467,6 +1479,31 @@ footer a:hover {
 
   .edu-card {
     padding: 36px 28px;
+  }
+  /* Responsive fix for scroll text and KPIs overlap */
+  @media (max-width: 600px) {
+    .hero-stats {
+      margin-right: 0;
+    }
+    .scroll-indicator {
+      position: static;
+      margin: 32px auto 0 auto;
+      transform: none;
+      right: auto;
+      left: auto;
+    }
+      /* Fix scroll indicator overlap on small screens */
+      .scroll-indicator {
+        position: static;
+        margin: 32px auto 0 auto;
+        transform: none;
+      }
+      .hero-content {
+        margin-bottom: 0;
+      }
+      .hero-stats {
+        margin-bottom: 0;
+      }
   }
 }
 
