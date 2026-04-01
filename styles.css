@@ -132,6 +132,21 @@ img {
   opacity: 0.5;
 }
 
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #bg-canvas {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ── Noise Overlay ─────────────────────────── */
 body::before {
   content: '';
@@ -1132,6 +1147,15 @@ section {
   font-weight: 600;
 }
 
+.bullet-metric {
+  display: block;
+  margin-top: 4px;
+  padding-left: 16px;
+  color: var(--accent-teal);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -1525,7 +1549,7 @@ footer a:hover {
   }
 
   .contact-cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .timeline::before {

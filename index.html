@@ -6,11 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
     content="Sissay Wube – Backend-focused Full-Stack Engineer specializing in Go, PostgreSQL, and microservices architecture with 6+ years of experience." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sissaywube.github.io/" />
   <meta property="og:title" content="Sissay Wube | Software Engineer" />
   <meta property="og:description"
-    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes." />
+    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes. 6+ years building production-grade systems." />
+  <meta property="og:image" content="https://sissaywube.github.io/assets/profile.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://sissaywube.github.io/" />
+  <meta property="twitter:title" content="Sissay Wube | Software Engineer" />
+  <meta property="twitter:description"
+    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes. 6+ years building production-grade systems." />
+  <meta property="twitter:image" content="https://sissaywube.github.io/assets/profile.jpg" />
+
+  <!-- Additional Meta Tags -->
+  <meta name="author" content="Sissay Wube" />
+  <meta name="keywords"
+    content="Software Engineer, Backend Developer, Go Developer, Microservices, PostgreSQL, Docker, Kubernetes, Full-Stack Developer, DevOps" />
   <meta name="theme-color" content="#080c14" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="alternate icon" href="favicon.ico" type="image/x-icon" />
 
   <title>Sissay Wube | Software Engineer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -78,7 +99,8 @@
               <i class="fa-solid fa-envelope"></i>
               Get in Touch
             </a>
-            <a href="assets/Resume.pdf" download class="btn-secondary" aria-label="Download resume">
+            <a href="assets/Resume.pdf" download class="btn-secondary" aria-label="Download resume"
+              onclick="trackResumeDownload()">
               <i class="fa-solid fa-download"></i>
               Resume
             </a>
@@ -189,7 +211,7 @@
               <i class="fa-solid fa-location-dot"></i>
               <span>Addis Ababa, Ethiopia</span>
             </div>
-            <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="contact-row">
+            <a href="https://github.com/sissaywube" target="_blank" rel="noopener noreferrer" class="contact-row">
               <i class="fa-brands fa-github"></i>
               github.com/sissaywube
             </a>
@@ -476,13 +498,23 @@
               <span>· Addis Ababa, Ethiopia</span>
             </div>
             <ul class="job-bullets">
-              <li class="job-bullet">Led architecture and full-stack development of a real-time production monitoring
-                &amp; evaluation system used across <strong>8+ production lines</strong>, reducing manual reporting time
-                from ~2 hours to <strong>under 5 minutes per shift</strong>.</li>
-              <li class="job-bullet">Spearheaded a web-based sales management system processing <strong>8,000–12,000
-                  transactions monthly</strong>, increasing sales team efficiency by <strong>~35%</strong>.</li>
-              <li class="job-bullet">Designed and implemented a real-time WebSocket notification system delivering
-                <strong>sub-second alerts</strong> to 50+ users for critical factory events.
+              <li class="job-bullet">
+                <strong>Real-Time Monitoring System:</strong> Led architecture and full-stack development used across 8+
+                production lines
+                <span class="bullet-metric">→ Reduced manual reporting from ~2 hours to under 5 minutes per shift</span>
+              </li>
+              <li class="job-bullet">
+                <strong>Sales Management Platform:</strong> Spearheaded web-based system processing 8,000–12,000
+                transactions monthly
+                <span class="bullet-metric">→ Increased sales team efficiency by ~35%</span>
+              </li>
+              <li class="job-bullet">
+                <strong>WebSocket Notification System:</strong> Designed real-time alert system for 50+ concurrent users
+                <span class="bullet-metric">→ Delivered sub-second notifications for critical factory events</span>
+              </li>
+              <li class="job-bullet">
+                <strong>Microservices Infrastructure:</strong> Containerized 20+ services with Docker and Kubernetes
+                <span class="bullet-metric">→ Reduced deployment time from 45+ minutes to ~8 minutes via CI/CD</span>
               </li>
               <li class="job-bullet">Containerized <strong>10+ microservices</strong> with Docker and deployed to
                 Kubernetes, reducing deployment time from 45+ minutes to <strong>~8 minutes</strong> via CI/CD
