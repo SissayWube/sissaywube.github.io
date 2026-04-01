@@ -43,11 +43,15 @@ function typeLoop() {
 
 // ── Particle Canvas ────────────────────────
 const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 let particles = [];
 let animFrameId;
 
+// Check if user prefers reduced motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function resizeCanvas() {
+  if (!canvas) return;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
@@ -286,10 +290,29 @@ function updateYearsOfExperience() {
     const careerStart = new Date(2018, 5); // June 2018 (Post-grad / Freelance starts)
     const now = new Date();
     const years = Math.floor((now - careerStart) / (365.25 * 24 * 60 * 60 * 1000));
-    
+
     if (yearsEl) yearsEl.textContent = years;
     if (statYearsEl) statYearsEl.setAttribute('data-target', years);
   }
+}
+
+// ── Analytics Tracking ─────────────────────
+function trackResumeDownload() {
+  // Log to console for now - can be replaced with actual analytics
+  console.log('Resume downloaded at:', new Date().toISOString());
+
+  // If you add Google Analytics or similar, uncomment and configure:
+  // gtag('event', 'download', {
+  //   'event_category': 'Resume',
+  //   'event_label': 'PDF Download'
+  // });
+
+  // Or for custom analytics endpoint:
+  // fetch('/api/track', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ event: 'resume_download', timestamp: Date.now() })
+  // }).catch(err => console.log('Tracking failed:', err));
 }
 
 // ── Init ───────────────────────────────────
@@ -301,10 +324,12 @@ document.addEventListener('DOMContentLoaded', () => {
   typedEl = document.getElementById('typed-text');
   setTimeout(typeLoop, 600);
 
-  // Canvas
-  resizeCanvas();
-  createParticles();
-  drawParticles();
+  // Canvas (only if user doesn't prefer reduced motion)
+  if (!prefersReducedMotion && canvas) {
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+  }
 
   // Scroll events
   window.addEventListener('scroll', () => {
@@ -328,13 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cursor glow (desktop only)
   if (window.innerWidth > 900) setupCursorGlow();
 
-  // Resize
-  window.addEventListener('resize', () => {
-    cancelAnimationFrame(animFrameId);
-    resizeCanvas();
-    createParticles();
-    drawParticles();
-  });
+  // Resize (only if canvas is active)
+  if (!prefersReducedMotion && canvas) {
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(animFrameId);
+      resizeCanvas();
+      createParticles();
+      drawParticles();
+    });
+  }
 
   // Stats counter trigger on section visible
   const heroSection = document.getElementById('hero');
