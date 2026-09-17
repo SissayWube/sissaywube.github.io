@@ -1,15 +1,15 @@
 /* ============================================
-   SISSAY WUBE – PORTFOLIO JS
-   Typed text, particle canvas, scroll effects
+   SISSAY WUBE – PORTFOLIO JAVASCRIPT
+   ERPNext-Inspired Theme Management & Interactions
    ============================================ */
 
 // ── Typed Text Effect ──────────────────────
 const typedRoles = [
-  'Backend Engineer',
-  'Go Expert',
-  'Microservices Architect',
-  'Full-Stack Developer',
-  'DevOps Practitioner',
+  'Go Microservices Architect',
+  'Senior Backend Engineer',
+  'Multitenant SaaS & ERP Specialist',
+  'Distributed Systems Engineer',
+  'DevOps & Kubernetes Practitioner'
 ];
 
 let roleIdx = 0;
@@ -26,7 +26,7 @@ function typeLoop() {
     charIdx++;
     if (charIdx === current.length) {
       isDeleting = true;
-      setTimeout(typeLoop, 1800);
+      setTimeout(typeLoop, 2200);
       return;
     }
   } else {
@@ -38,7 +38,7 @@ function typeLoop() {
     }
   }
 
-  setTimeout(typeLoop, isDeleting ? 55 : 90);
+  setTimeout(typeLoop, isDeleting ? 40 : 80);
 }
 
 // ── Particle Canvas ────────────────────────
@@ -47,7 +47,6 @@ const ctx = canvas ? canvas.getContext('2d') : null;
 let particles = [];
 let animFrameId;
 
-// Check if user prefers reduced motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function resizeCanvas() {
@@ -56,40 +55,56 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 
+function getThemeColors() {
+  const isDark = (document.documentElement.getAttribute('data-theme') || 'light') === 'dark';
+  return {
+    isDark,
+    particleColor: isDark ? '96, 165, 250' : '71, 85, 105',
+    lineColor: isDark ? '59, 130, 246' : '27, 102, 201',
+    lineBaseOpacity: isDark ? 0.16 : 0.08,
+    particleAlphaMin: isDark ? 0.15 : 0.07,
+    particleAlphaMax: isDark ? 0.40 : 0.22
+  };
+}
+
 function createParticles() {
+  if (!canvas) return;
   particles = [];
   const isMobile = window.innerWidth < 768;
-  const count = Math.floor((canvas.width * canvas.height) / (isMobile ? 28000 : 18000));
-  const theme = document.body.getAttribute('data-theme') || 'dark';
+  const count = Math.floor((canvas.width * canvas.height) / (isMobile ? 32000 : 22000));
+  const colors = getThemeColors();
 
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.3,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      alpha: Math.random() * 0.5 + 0.1,
-      color: theme === 'light' ? (Math.random() > 0.5 ? '255,107,0' : '230,96,0') : (Math.random() > 0.5 ? '255,107,0' : '255,133,51'),
+      r: Math.random() * 1.5 + 0.5,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * (colors.particleAlphaMax - colors.particleAlphaMin) + colors.particleAlphaMin,
+      color: colors.particleColor
     });
   }
 }
 
 function drawParticles() {
+  if (!ctx || !canvas) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const colors = getThemeColors();
 
-  // Draw connection lines
+  // Draw connecting lines
+  const maxDist = 125;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 140) {
-        const opacity = (1 - dist / 140) * 0.15;
+
+      if (dist < maxDist) {
+        const opacity = (1 - dist / maxDist) * colors.lineBaseOpacity;
         ctx.beginPath();
-        const lineTheme = document.body.getAttribute('data-theme') === 'light' ? '255,107,0' : '255,133,51';
-        ctx.strokeStyle = `rgba(${lineTheme},${opacity})`;
-        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = `rgba(${colors.lineColor}, ${opacity})`;
+        ctx.lineWidth = 0.6;
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
         ctx.stroke();
@@ -97,11 +112,11 @@ function drawParticles() {
     }
   }
 
-  // Draw particles
+  // Draw particle dots
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+    ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
     ctx.fill();
 
     p.x += p.vx;
@@ -116,22 +131,64 @@ function drawParticles() {
   animFrameId = requestAnimationFrame(drawParticles);
 }
 
-// ── NAV Scroll Effect ──────────────────────
+// ── Theme Manager ──────────────────────────
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (document.body) {
+    document.body.setAttribute('data-theme', theme);
+  }
+  localStorage.setItem('sw_theme', theme);
+
+  // Update meta theme-color
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.setAttribute('content', theme === 'dark' ? '#0b0f19' : '#f4f5f7');
+  }
+
+  // Update theme-toggle title & aria
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    const isDark = theme === 'dark';
+    toggleBtn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+
+  // Re-seed particles with updated theme colors
+  if (!prefersReducedMotion && canvas) {
+    createParticles();
+  }
+}
+
+function setupThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (!toggleBtn) return;
+
+  // Retrieve existing preference or default to clean ERPNext light theme
+  const currentTheme = localStorage.getItem('sw_theme') || 'light';
+  applyTheme(currentTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const nextTheme = current === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+}
+
+// ── Navbar Scroll & Active Section ─────────
 function handleNavScroll() {
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
-  if (window.scrollY > 60) {
+  if (window.scrollY > 40) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
 
-  // Active link tracking
   let current = '';
   sections.forEach(sec => {
-    const sectionTop = sec.offsetTop - 120;
+    const sectionTop = sec.offsetTop - 140;
     if (window.scrollY >= sectionTop) {
       current = sec.getAttribute('id');
     }
@@ -145,39 +202,36 @@ function handleNavScroll() {
   });
 }
 
-// ── Scroll Reveal ──────────────────────────
-function handleReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
-      el.classList.add('visible');
-    }
-  });
+// ── Intersection Observer for Scroll Reveal ─
+function setupRevealObserver() {
+  const revealElements = document.querySelectorAll('.reveal, .timeline-item');
+  
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05
+    });
 
-  // Timeline items
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  timelineItems.forEach((item, idx) => {
-    const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
-      setTimeout(() => item.classList.add('visible'), idx * 80);
-    }
-  });
-
-  // Project cards
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach((card) => {
-    const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
-      card.classList.add('visible');
-    }
-  });
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    // Fallback if IntersectionObserver is not supported
+    revealElements.forEach(el => el.classList.add('visible'));
+  }
 }
 
 // ── Hamburger Menu ─────────────────────────
 function setupHamburger() {
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
+  if (!hamburger || !navLinks) return;
 
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
@@ -188,14 +242,17 @@ function setupHamburger() {
       spans[1].style.opacity = '0';
       spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
     } else {
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      spans.forEach(s => {
+        s.style.transform = '';
+        s.style.opacity = '';
+      });
     }
   });
 
-  // Close on link click
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
       hamburger.querySelectorAll('span').forEach(s => {
         s.style.transform = '';
         s.style.opacity = '';
@@ -204,73 +261,49 @@ function setupHamburger() {
   });
 }
 
-// ── Counter Animation ──────────────────────
+// ── Animated Stats Counter ─────────────────
+let countersAnimated = false;
 function animateCounters() {
+  if (countersAnimated) return;
+  countersAnimated = true;
+
   const statValues = document.querySelectorAll('.stat-value[data-target]');
   statValues.forEach(el => {
     const target = parseFloat(el.dataset.target);
     const suffix = el.dataset.suffix || '';
     let start = 0;
-    const duration = 1800;
+    const duration = 1400;
+
     const step = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = (eased * target).toFixed(1).replace('.0', '') + suffix;
-      if (progress < 1) requestAnimationFrame(step);
+      const currentVal = Math.round(eased * target);
+      el.textContent = currentVal + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
     };
     requestAnimationFrame(step);
   });
 }
 
-// ── Smooth Scroll for Nav Links ────────────
+// ── Smooth Scroll Offset ───────────────────
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
-        const offset = 80;
+        const offset = 75;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     });
-  });
-}
-
-// ── Cursor Glow Effect ─────────────────────
-function setupCursorGlow() {
-  const glow = document.createElement('div');
-  glow.style.cssText = `
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-    transition: left 0.15s ease, top 0.15s ease;
-  `;
-  document.body.appendChild(glow);
-
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-}
-
-// ── Theme Toggle ───────────────────────────
-function setupThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle');
-
-  toggleBtn.addEventListener('click', () => {
-    const current = document.body.getAttribute('data-theme');
-    const nextTheme = current === 'light' ? 'dark' : 'light';
-    document.body.setAttribute('data-theme', nextTheme);
-
-    // Recreate particles to update color scheme based on theme
-    createParticles();
   });
 }
 
@@ -282,79 +315,27 @@ function updateFooterYear() {
   }
 }
 
-// ── Years of Experience Automation ─────────
-function updateYearsOfExperience() {
-  const yearsEl = document.getElementById('years-exp');
-  const statYearsEl = document.querySelector('.stat-value[data-target="6"]'); // Update the stats counter too
-  if (yearsEl || statYearsEl) {
-    const careerStart = new Date(2018, 5); // June 2018 (Post-grad / Freelance starts)
-    const now = new Date();
-    const years = Math.floor((now - careerStart) / (365.25 * 24 * 60 * 60 * 1000));
-
-    if (yearsEl) yearsEl.textContent = years;
-    if (statYearsEl) statYearsEl.setAttribute('data-target', years);
-  }
-}
-
-// ── Analytics Tracking ─────────────────────
+// ── Analytics & Resume Download ────────────
 function trackResumeDownload() {
-  // Log to console for now - can be replaced with actual analytics
   console.log('Resume downloaded at:', new Date().toISOString());
-
-  // If you add Google Analytics or similar, uncomment and configure:
-  // gtag('event', 'download', {
-  //   'event_category': 'Resume',
-  //   'event_label': 'PDF Download'
-  // });
-
-  // Or for custom analytics endpoint:
-  // fetch('/api/track', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ event: 'resume_download', timestamp: Date.now() })
-  // }).catch(err => console.log('Tracking failed:', err));
 }
 
-// ── Init ───────────────────────────────────
+// ── DOM Initialization ─────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  setupThemeToggle();
   updateFooterYear();
-  updateYearsOfExperience();
+  setupRevealObserver();
 
-  // Typed effect
+  // Typed text initialization
   typedEl = document.getElementById('typed-text');
-  setTimeout(typeLoop, 600);
+  if (typedEl) setTimeout(typeLoop, 500);
 
-  // Canvas (only if user doesn't prefer reduced motion)
+  // Background Canvas
   if (!prefersReducedMotion && canvas) {
     resizeCanvas();
     createParticles();
     drawParticles();
-  }
 
-  // Scroll events
-  window.addEventListener('scroll', () => {
-    handleNavScroll();
-    handleReveal();
-  }, { passive: true });
-
-  // Initial trigger
-  handleNavScroll();
-  handleReveal();
-
-  // Mobile menu
-  setupHamburger();
-
-  // Theme Toggler
-  setupThemeToggle();
-
-  // Smooth scroll
-  setupSmoothScroll();
-
-  // Cursor glow (desktop only)
-  if (window.innerWidth > 900) setupCursorGlow();
-
-  // Resize (only if canvas is active)
-  if (!prefersReducedMotion && canvas) {
     window.addEventListener('resize', () => {
       cancelAnimationFrame(animFrameId);
       resizeCanvas();
@@ -363,12 +344,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Stats counter trigger on section visible
+  // Scroll events
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+  handleNavScroll();
+
+  setupHamburger();
+  setupSmoothScroll();
+
+  // Stats Intersection Observer
   const heroSection = document.getElementById('hero');
-  const statsObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) animateCounters();
-    });
-  }, { threshold: 0.3 });
-  if (heroSection) statsObserver.observe(heroSection);
+  if (heroSection) {
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCounters();
+      });
+    }, { threshold: 0.2 });
+    statsObserver.observe(heroSection);
+  }
+});
+
+// Handle direct hash on load
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    const el = document.querySelector(window.location.hash);
+    if (el) {
+      el.scrollIntoView();
+      // Ensure element and its children become visible
+      el.classList.add('visible');
+      el.querySelectorAll('.reveal, .timeline-item').forEach(child => child.classList.add('visible'));
+    }
+  }
 });

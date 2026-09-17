@@ -1,52 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Sissay Wube – Backend-focused Full-Stack Engineer specializing in Go, PostgreSQL, and microservices architecture with 6+ years of experience." />
+    content="Sissay Wube – Senior Software Engineer specializing in Go, Microservices, SaaS ERP Platforms, and Distributed Systems with 6+ years of experience." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sissaywube.github.io/" />
-  <meta property="og:title" content="Sissay Wube | Software Engineer" />
+  <meta property="og:title" content="Sissay Wube | Senior Software Engineer" />
   <meta property="og:description"
-    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes. 6+ years building production-grade systems." />
+    content="Senior Software Engineer with 6+ years expertise in Go, microservices, SaaS ERP, Docker, and Kubernetes. Building robust, real-time, and scalable distributed systems." />
   <meta property="og:image" content="https://sissaywube.github.io/assets/profile.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://sissaywube.github.io/" />
-  <meta property="twitter:title" content="Sissay Wube | Software Engineer" />
+  <meta property="twitter:title" content="Sissay Wube | Senior Software Engineer" />
   <meta property="twitter:description"
-    content="Backend-focused Full-Stack Engineer with expertise in Go, microservices, Docker, and Kubernetes. 6+ years building production-grade systems." />
+    content="Senior Software Engineer with 6+ years expertise in Go, microservices, SaaS ERP, Docker, and Kubernetes. Building robust, real-time, and scalable distributed systems." />
   <meta property="twitter:image" content="https://sissaywube.github.io/assets/profile.jpg" />
 
   <!-- Additional Meta Tags -->
   <meta name="author" content="Sissay Wube" />
   <meta name="keywords"
-    content="Software Engineer, Backend Developer, Go Developer, Microservices, PostgreSQL, Docker, Kubernetes, Full-Stack Developer, DevOps" />
-  <meta name="theme-color" content="#080c14" />
+    content="Senior Software Engineer, Backend Developer, Go Expert, ERPNext, Microservices, PostgreSQL, Row-Level Security, Kubernetes, Docker, Distributed Systems, Full-Stack Developer" />
+  <meta name="theme-color" content="#f4f5f7" />
+
+  <!-- Prevent theme flicker before DOMContentLoaded -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('sw_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate icon" href="favicon.ico" type="image/x-icon" />
 
-  <title>Sissay Wube | Software Engineer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Sissay Wube | Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
 
-  <!-- Animated Background Canvas -->
+  <!-- Animated Ambient Canvas -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- ── NAVBAR ─────────────────────────── -->
   <nav id="navbar">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">&lt;SW /&gt;</a>
+      <a href="#hero" class="nav-logo" aria-label="Sissay Wube Home">
+        <span class="logo-bracket">&lt;</span>SW <span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
+      </a>
+
       <ul class="nav-links" id="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -55,12 +71,13 @@
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="nav-cta">Hire Me</a></li>
       </ul>
+
       <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light or dark theme" title="Toggle theme">
           <i class="fa-solid fa-sun icon-sun"></i>
           <i class="fa-solid fa-moon icon-moon"></i>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -77,65 +94,80 @@
             <span class="dot"></span>
             Available for opportunities
           </div>
+
           <h1 class="hero-name">
-            Sissay<br>
-            <span class="gradient-text">Wube</span>
+            Sissay <span class="hero-name-highlight">Wube</span>
           </h1>
-          <p class="hero-title">
-            <span id="typed-text"></span><span class="typed-cursor">|</span>
-          </p>
+
+          <div class="hero-title-wrapper">
+            <span class="hero-title-prefix">Senior Software Engineer &middot; </span>
+            <span class="hero-title"><span id="typed-text"></span><span class="typed-cursor">|</span></span>
+          </div>
+
           <p class="hero-summary">
-            Backend-focused Full-Stack Engineer with <strong><span id="years-exp">6</span>+ years</strong> of expertise
-            in Go, PostgreSQL,
-            and microservices architecture. Building robust, real-time, and scalable systems that
-            drive measurable business impact.
+            Backend-focused Full-Stack Engineer with <strong><strong>6+ years</strong></strong> of expertise
+            in <strong>Go</strong> and <strong>microservices architecture</strong>. Adept at utilizing Domain-Driven
+            Design and containerization (Docker, Kubernetes) to build, deploy, and scale robust applications. Strong
+            track record of developing real-time, WebSocket-driven business systems and multitenant distributed platforms
+            that streamline operations and ensure strict data isolation.
           </p>
+
           <div class="hero-actions">
-            <a href="#projects" class="btn-primary">
-              <i class="fa-solid fa-briefcase"></i>
-              View My Work
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-layer-group"></i>
+              View Projects
             </a>
-            <a href="#contact" class="btn-secondary">
+            <a href="#contact" class="btn btn-secondary">
               <i class="fa-solid fa-envelope"></i>
               Get in Touch
             </a>
-            <a href="assets/Resume.pdf" download class="btn-secondary" aria-label="Download resume"
-              onclick="trackResumeDownload()">
-              <i class="fa-solid fa-download"></i>
-              Resume
+            <a href="assets/Resume.pdf" download="Sissay_Wube_CV.pdf" class="btn btn-outline"
+              aria-label="Download Sissay Wube Resume PDF" onclick="trackResumeDownload()">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              Download CV
             </a>
           </div>
 
           <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-value" data-target="6" data-suffix="+">0</div>
-              <div class="stat-label">Years Exp.</div>
+            <div class="stat-card">
+              <div class="stat-value" data-target="6" data-suffix="+">6+</div>
+              <div class="stat-label">Years Experience</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-value" data-target="20" data-suffix="+">0</div>
-              <div class="stat-label">Microservices</div>
+            <div class="stat-card">
+              <div class="stat-value" data-target="20" data-suffix="+">20+</div>
+              <div class="stat-label">Microservices Built</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-value" data-target="12" data-suffix="K">0</div>
-              <div class="stat-label">Txn / Month</div>
+            <div class="stat-card">
+              <div class="stat-value" data-target="12" data-suffix="K">12K</div>
+              <div class="stat-label">Txn / Month Handled</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-value" data-target="90" data-suffix="%">0</div>
-              <div class="stat-label">Test Coverage</div>
+            <div class="stat-card">
+              <div class="stat-value" data-target="90" data-suffix="%">90%</div>
+              <div class="stat-label">Test Coverage Standard</div>
             </div>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="avatar-ring">
-            <div class="avatar-inner">
-              <img src="assets/profile.jpg" alt="Sissay Wube – Backend-focused Full-Stack Software Engineer"
-                class="profile-img" loading="lazy" />
+          <div class="avatar-card">
+            <div class="avatar-ring">
+              <div class="avatar-inner">
+                <img src="assets/profile.jpg" alt="Sissay Wube – Senior Software Engineer" class="profile-img" />
+              </div>
             </div>
-          </div>
-          <div class="hero-location">
-            <i class="fa-solid fa-location-dot"></i>
-            Addis Ababa, Ethiopia
+            <div class="avatar-meta">
+              <div class="avatar-name">Sissay Wube</div>
+              <div class="avatar-role">Senior Software Engineer</div>
+              <div class="hero-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Addis Ababa, Ethiopia
+              </div>
+            </div>
+            <div class="avatar-chips">
+              <span class="avatar-chip"><i class="fa-brands fa-golang"></i> Go (Expert)</span>
+              <span class="avatar-chip"><i class="fa-solid fa-cubes"></i> Microservices</span>
+              <span class="avatar-chip"><i class="fa-solid fa-network-wired"></i> ERPNext</span>
+            </div>
           </div>
         </div>
 
@@ -143,78 +175,91 @@
     </div>
 
     <div class="scroll-indicator">
-      <a href="#about" aria-label="Scroll down">
+      <a href="#about" aria-label="Scroll to About section">
         <div class="mouse"></div>
       </a>
     </div>
   </section>
 
   <!-- ── ABOUT ──────────────────────────── -->
-  <section id="about">
+  <section id="about" class="section-padding">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">/** About Me */</span>
-        <h2 class="section-title">The Engineer <span class="gradient-text">Behind the Code</span></h2>
+        <span class="section-eyebrow">Professional Profile</span>
+        <h2 class="section-title">The Engineer Behind the Systems</h2>
+        <p class="section-desc">Engineering resilient distributed systems, real-time pipelines, and scalable enterprise platforms.</p>
         <div class="section-line"></div>
       </div>
 
       <div class="about-grid">
-        <div class="about-left">
-          <div class="about-card reveal">
-            <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
-            <div class="card-title">Real-Time Systems</div>
-            <div class="card-text">Built WebSocket-driven production monitoring used across 8+ factory lines, cutting
-              reporting time from 2 hours to under 5 minutes per shift.</div>
+        <div class="about-cards-column">
+          <div class="info-card reveal">
+            <div class="card-icon"><i class="fa-solid fa-cubes"></i></div>
+            <h3 class="card-title">Multitenant SaaS &amp; Microservices</h3>
+            <p class="card-text">
+              Architected high-performance Go microservices for a multitenant SaaS ERP platform at <strong>BM Technology PLC</strong>,
+              implementing Row-Level Security (RLS) policies, transactional outbox event publishers, and gRPC/Protobuf intercommunication.
+            </p>
           </div>
-          <div class="about-card reveal" style="transition-delay:0.1s">
-            <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
-            <div class="card-title">Microservices Architect</div>
-            <div class="card-text">Containerized 10+ services with Docker & Kubernetes, slashing deployment time from
-              45+ minutes to ~8 minutes via automated CI/CD pipelines.</div>
+
+          <div class="info-card reveal" style="transition-delay:0.1s">
+            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="card-title">Real-Time Factory Systems</h3>
+            <p class="card-text">
+              Spearheaded full-stack WebSocket monitoring across <strong>8+ production lines</strong> at <strong>Phibela Industrial</strong>,
+              slashing shift reporting time from 2 hours to under 5 minutes and feeding live factory metrics directly into ERPNext.
+            </p>
           </div>
-          <div class="about-card reveal" style="transition-delay:0.2s">
+
+          <div class="info-card reveal" style="transition-delay:0.2s">
             <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <div class="card-title">Business Impact</div>
-            <div class="card-text">Engineered sales systems processing 8,000–12,000 transactions monthly, boosting sales
-              team efficiency by ~35%.</div>
+            <h3 class="card-title">Production Scale &amp; Reliability</h3>
+            <p class="card-text">
+              Engineered sales systems processing <strong>8,000–12,000 transactions monthly</strong> (+35% efficiency) and containerized
+              <strong>20+ microservices</strong> on Kubernetes via automated CI/CD pipelines, accelerating deploys from 45m to ~8m.
+            </p>
           </div>
         </div>
 
-        <div class="about-right reveal">
-          <p class="about-intro">
-            I'm a <strong>Backend-focused Full-Stack Engineer</strong> based in Addis Ababa, Ethiopia,
-            with over <span class="about-highlight">6 years of hands-on experience</span> designing and
-            shipping production-grade software that solves real business problems.
-          </p>
-          <p class="about-intro">
-            My core expertise sits at the intersection of <strong>high-performance Go services</strong>,
-            relational data modelling with <strong>PostgreSQL</strong>, and distributed architectures built
-            on <strong>Domain-Driven Design</strong> principles. I thrive in environments where engineering
-            excellence, system reliability, and business outcomes all matter equally.
-          </p>
-          <p class="about-intro">
-            From laying the DDD foundations of a digital banking platform at Milto Labs to leading
-            full-stack development of a real-time factory monitoring suite at Phibela Industrial, I bring
-            a proven ability to <span class="about-highlight">architect, build, and own systems end-to-end</span>.
-          </p>
+        <div class="about-narrative-column reveal">
+          <div class="narrative-card">
+            <h3 class="narrative-heading">High Performance, Scalability &amp; Business Rigor</h3>
+            <p class="about-intro">
+              I am a <strong>Senior Software Engineer</strong> based in Addis Ababa, Ethiopia, with over <strong>6 years of experience</strong>
+              architecting, building, and deploying production-grade distributed applications.
+            </p>
+            <p class="about-intro">
+              My engineering focus centers on <strong>high-performance Go microservices</strong>, rigorous <strong>Domain-Driven Design (DDD)</strong>,
+              multitenant database isolation with <strong>PostgreSQL &amp; Row-Level Security</strong>, and event-driven architectures utilizing
+              <strong>Kafka, Redpanda, and RabbitMQ</strong>.
+            </p>
+            <p class="about-intro">
+              Having specialized in enterprise workflows and <strong>ERPNext customizations</strong>, I bridge core operational business logic with
+              low-latency backend infrastructure—seamlessly integrating Go microservices with ERPNext APIs to automate complex multi-departmental workflows.
+            </p>
 
-          <div class="contact-info">
-            <div class="contact-row">
-              <i class="fa-solid fa-envelope"></i>
-              <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a>
+            <div class="contact-quicklist">
+              <div class="quick-row">
+                <span class="quick-label"><i class="fa-solid fa-envelope"></i> Email:</span>
+                <a href="mailto:sissay440@gmail.com" class="quick-value">sissay440@gmail.com</a>
+              </div>
+              <div class="quick-row">
+                <span class="quick-label"><i class="fa-solid fa-phone"></i> Phone:</span>
+                <a href="tel:+251921459706" class="quick-value">+251 92 145 9706</a>
+              </div>
+              <div class="quick-row">
+                <span class="quick-label"><i class="fa-solid fa-location-dot"></i> Location:</span>
+                <span class="quick-value">Addis Ababa, Ethiopia</span>
+              </div>
+              <div class="quick-row">
+                <span class="quick-label"><i class="fa-brands fa-github"></i> GitHub:</span>
+                <a href="https://github.com/sissaywube" target="_blank" rel="noopener noreferrer" class="quick-value">github.com/sissaywube</a>
+              </div>
+              <div class="quick-row">
+                <span class="quick-label"><i class="fa-brands fa-linkedin"></i> LinkedIn:</span>
+                <a href="https://linkedin.com/in/sissay-wube" target="_blank" rel="noopener noreferrer" class="quick-value">linkedin.com/in/sissay-wube</a>
+              </div>
             </div>
-            <div class="contact-row">
-              <i class="fa-solid fa-phone"></i>
-              <span>+251 92 145 9706</span>
-            </div>
-            <div class="contact-row">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Addis Ababa, Ethiopia</span>
-            </div>
-            <a href="https://github.com/sissaywube" target="_blank" rel="noopener noreferrer" class="contact-row">
-              <i class="fa-brands fa-github"></i>
-              github.com/sissaywube
-            </a>
           </div>
         </div>
       </div>
@@ -222,152 +267,141 @@
   </section>
 
   <!-- ── SKILLS ─────────────────────────── -->
-  <section id="skills">
+  <section id="skills" class="section-padding section-alt">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">// Technical Arsenal</span>
-        <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
-        <p class="section-desc">A deep toolkit refined across production systems, microservices, and full-stack web
-          development.</p>
+        <span class="section-eyebrow">Technical Arsenal</span>
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <p class="section-desc">Tools, protocols, and architectural patterns refined across mission-critical enterprise systems.</p>
         <div class="section-line"></div>
       </div>
 
       <div class="skills-grid">
 
-        <div class="skill-category cat-lang reveal">
-          <div class="cat-label">Languages</div>
-          <div class="cat-name">Programming Languages</div>
+        <!-- Languages -->
+        <div class="skill-category reveal">
+          <div class="cat-header">
+            <span class="cat-label">Core</span>
+            <h3 class="cat-name">Languages</h3>
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Go (Expert)
-            </span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Go (Expert)</span>
             <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
           </div>
         </div>
 
-        <div class="skill-category cat-back reveal" style="transition-delay: 0.05s">
-          <div class="cat-label">Backend</div>
-          <div class="cat-name">Frameworks &amp; Libraries</div>
+        <!-- Backend & Protocols -->
+        <div class="skill-category reveal" style="transition-delay:0.05s">
+          <div class="cat-header">
+            <span class="cat-label">Backend</span>
+            <h3 class="cat-name">Protocols &amp; Frameworks</h3>
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Gin
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Echo
-            </span>
-            <span class="skill-tag">NodeJS</span>
-            <span class="skill-tag">Express</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> gRPC</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Protocol Buffers (Buf)</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Gin</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Echo</span>
             <span class="skill-tag">Fiber</span>
             <span class="skill-tag">Gorm</span>
             <span class="skill-tag">Gorilla</span>
+            <span class="skill-tag">RESTful APIs</span>
           </div>
         </div>
 
-        <div class="skill-category cat-front reveal" style="transition-delay: 0.1s">
-          <div class="cat-label">Frontend</div>
-          <div class="cat-name">UI Development</div>
+        <!-- Enterprise & ERP Systems -->
+        <div class="skill-category reveal" style="transition-delay:0.1s">
+          <div class="cat-header">
+            <span class="cat-label">Enterprise</span>
+            <h3 class="cat-name">ERPNext &amp; Frappe</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> ERPNext Modules</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Custom Doctypes</span>
+            <span class="skill-tag">Frappe Framework</span>
+            <span class="skill-tag">ERPNext REST APIs</span>
+            <span class="skill-tag">Data Pipelines</span>
+            <span class="skill-tag">ERP Workflows</span>
+          </div>
+        </div>
+
+        <!-- Event Streaming & Messaging -->
+        <div class="skill-category reveal" style="transition-delay:0.15s">
+          <div class="cat-header">
+            <span class="cat-label">Streaming</span>
+            <h3 class="cat-name">Message Brokers</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> RabbitMQ</span>
+            <span class="skill-tag">Apache Kafka</span>
+            <span class="skill-tag">Redpanda</span>
+            <span class="skill-tag">Outbox Pattern</span>
+            <span class="skill-tag">Async Consumers</span>
+          </div>
+        </div>
+
+        <!-- Databases & Storage -->
+        <div class="skill-category reveal" style="transition-delay:0.2s">
+          <div class="cat-header">
+            <span class="cat-label">Data</span>
+            <h3 class="cat-name">Databases &amp; Storage</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> PostgreSQL (RLS)</span>
+            <span class="skill-tag">CockroachDB</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">Query Optimization</span>
+          </div>
+        </div>
+
+        <!-- DevOps & Infrastructure -->
+        <div class="skill-category reveal" style="transition-delay:0.25s">
+          <div class="cat-header">
+            <span class="cat-label">Platform</span>
+            <h3 class="cat-name">DevOps &amp; Cloud</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Docker</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Kubernetes</span>
+            <span class="skill-tag">CI/CD Pipelines</span>
+            <span class="skill-tag">WebSocket</span>
+            <span class="skill-tag">OpenTelemetry</span>
+            <span class="skill-tag">Linux (Ubuntu)</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-category reveal" style="transition-delay:0.3s">
+          <div class="cat-header">
+            <span class="cat-label">Frontend</span>
+            <h3 class="cat-name">User Interfaces</h3>
+          </div>
           <div class="skill-tags">
             <span class="skill-tag">React</span>
-            <span class="skill-tag">Redux</span>
             <span class="skill-tag">Material UI</span>
+            <span class="skill-tag">Redux</span>
+            <span class="skill-tag">Responsive UI</span>
+            <span class="skill-tag">Dashboard UX</span>
           </div>
         </div>
 
-        <div class="skill-category cat-db reveal" style="transition-delay: 0.15s">
-          <div class="cat-label">Databases &amp; Messaging</div>
-          <div class="cat-name">Data Stores</div>
-          <div class="skill-tags">
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              PostgreSQL
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              MongoDB
-            </span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">CockroachDB</span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              MySQL
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              RabbitMQ
-            </span>
+        <!-- Architecture & Methodologies -->
+        <div class="skill-category reveal" style="transition-delay:0.35s">
+          <div class="cat-header">
+            <span class="cat-label">Architecture</span>
+            <h3 class="cat-name">System Design</h3>
           </div>
-        </div>
-
-        <div class="skill-category cat-devops reveal" style="transition-delay: 0.2s">
-          <div class="cat-label">DevOps &amp; Infrastructure</div>
-          <div class="cat-name">Cloud &amp; Tooling</div>
           <div class="skill-tags">
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Docker
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Kubernetes
-            </span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">WebSocket</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Linux</span>
-          </div>
-        </div>
-
-        <div class="skill-category cat-back reveal" style="transition-delay: 0.25s">
-          <div class="cat-label">Methodologies</div>
-          <div class="cat-name">Architecture &amp; Design</div>
-          <div class="skill-tags">
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Domain-Driven Design
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Microservices
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              RESTful APIs
-            </span>
-            <span class="skill-tag expert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              TDD
-            </span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Domain-Driven Design (DDD)</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Microservices Architecture</span>
+            <span class="skill-tag expert"><i class="fa-solid fa-check"></i> Multitenancy &amp; Data Isolation</span>
+            <span class="skill-tag">Worker Pools &amp; Channels</span>
+            <span class="skill-tag">Test-Driven Testing (&gt;90%)</span>
           </div>
         </div>
 
@@ -376,94 +410,229 @@
   </section>
 
   <!-- ── PROJECTS ──────────────────────── -->
-  <section id="projects">
+  <section id="projects" class="section-padding">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">// Featured Work</span>
-        <h2 class="section-title">Key <span class="gradient-text">Projects</span></h2>
-        <p class="section-desc">Production systems I've architected and built, delivering measurable business outcomes.
-        </p>
+        <span class="section-eyebrow">Featured Work</span>
+        <h2 class="section-title">Key Projects &amp; Systems</h2>
+        <p class="section-desc">Production systems architected to deliver real-time speed, multitenant security, and concrete business value.</p>
         <div class="section-line"></div>
       </div>
 
       <div class="projects-grid">
 
+        <!-- Project 1: BM Technology Platform -->
         <div class="project-card reveal">
-          <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-server"></i></div>
+            <div class="project-meta">
+              <span class="project-type">SaaS ERP &amp; Microservices</span>
+              <h3 class="project-title">Multitenant SaaS ERP Platform</h3>
+            </div>
+          </div>
           <div class="project-content">
-            <h3 class="project-title">Real-Time Production Monitoring</h3>
-            <p class="project-desc">WebSocket-driven factory monitoring system used across <strong>8+ production
-                lines</strong>, cutting manual reporting from ~2 hours to <strong>under 5 minutes</strong> per shift.
+            <p class="project-desc">
+              Designed and developed high-performance <strong>Go microservices</strong> integrated with <strong>ERPNext APIs</strong>.
+              Implemented strict <strong>Row-Level Security (RLS)</strong> policies for cross-organizational data isolation,
+              transactional outbox patterns for reliable domain event publishing, and high-speed gRPC/Protocol Buffers communication.
             </p>
             <div class="project-impact">
-              <span class="impact-badge"><i class="fa-solid fa-bolt"></i> 95% time reduction</span>
-              <span class="impact-badge"><i class="fa-solid fa-users"></i> 50+ concurrent users</span>
+              <span class="impact-badge badge-green"><i class="fa-solid fa-shield-halved"></i> Strict RLS Data Isolation</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-bolt"></i> Low-Latency gRPC Inter-service</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-arrows-split-up-and-left"></i> Outbox Pattern</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">ERPNext</span>
+              <span class="tech-badge">gRPC / Protobuf</span>
+              <span class="tech-badge">PostgreSQL RLS</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+
+                <!-- Project 2: Canteen Management System -->
+        <div class="project-card reveal" style="transition-delay:0.05s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-utensils"></i></div>
+            <div class="project-meta">
+              <span class="project-type">Full-Stack TypeScript &amp; IoT Hardware</span>
+              <h3 class="project-title">Enterprise Canteen &amp; Meal Management System</h3>
+            </div>
+            <a href="https://github.com/SissayWube/Canteen" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="View Source on GitHub" aria-label="View Canteen Source on GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+          <div class="project-content">
+            <p class="project-desc">
+              End-to-end cafeteria management system built with <strong>TypeScript (Node/Express 5 &amp; React 19)</strong> and <strong>MongoDB</strong>.
+              Features real-time order dispatching via <strong>Socket.IO</strong>, automated departmental meal quotas, customer bulk imports, and direct hardware integration with
+              <strong>ZKTeco 950 Plus</strong> biometric terminals and <strong>EPOS ECO 250</strong> thermal receipt printers. Fully containerized with Docker &amp; Docker Compose.
+            </p>
+            <div class="project-impact">
+              <span class="impact-badge badge-green"><i class="fa-solid fa-fingerprint"></i> ZKTeco Biometrics &amp; POS</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-bolt"></i> Real-Time Socket.IO</span>
+              <span class="impact-badge badge-gray"><i class="fa-brands fa-docker"></i> Docker Compose</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">React 19 (MUI)</span>
+              <span class="tech-badge">Node / Express</span>
+              <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">Socket.IO</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Thermal Printer</span>
+            </div>
+          </div>
+        </div>
+
+<!-- Project 2: Real-Time Production Monitoring -->
+        <div class="project-card reveal" style="transition-delay:0.1s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="project-meta">
+              <span class="project-type">Industrial IoT &amp; Real-Time</span>
+              <h3 class="project-title">Real-Time Factory Production Suite</h3>
+            </div>
+          </div>
+          <div class="project-content">
+            <p class="project-desc">
+              Led full-stack architecture of a real-time monitoring and evaluation system deployed across <strong>8+ production lines</strong>
+              at Phibela Industrial. Integrated custom ERPNext doctypes and automated ETL data pipelines to synchronize real-time factory floor
+              metrics with central accounting modules.
+            </p>
+            <div class="project-impact">
+              <span class="impact-badge badge-green"><i class="fa-solid fa-clock"></i> 2h to &lt;5 min reporting time</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-industry"></i> 8+ Production Lines</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-bell"></i> Sub-second Alerts (50+ users)</span>
             </div>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
               <span class="tech-badge">WebSocket</span>
               <span class="tech-badge">React</span>
               <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">ERPNext</span>
+              <span class="tech-badge">Docker</span>
             </div>
           </div>
         </div>
 
-        <div class="project-card reveal" style="transition-delay:0.1s">
-          <div class="project-icon"><i class="fa-solid fa-cash-register"></i></div>
+        <!-- Project 3: Sales Management System -->
+        <div class="project-card reveal" style="transition-delay:0.15s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-cash-register"></i></div>
+            <div class="project-meta">
+              <span class="project-type">Enterprise Web Application</span>
+              <h3 class="project-title">Web Sales Management System</h3>
+            </div>
+          </div>
           <div class="project-content">
-            <h3 class="project-title">Sales Management System</h3>
-            <p class="project-desc">Web-based platform processing <strong>8,000–12,000 transactions monthly</strong>,
-              boosting sales team efficiency by <strong>~35%</strong> with automated workflows and real-time analytics.
+            <p class="project-desc">
+              Spearheaded a full-featured web-based sales operations platform handling <strong>8,000–12,000 transactions monthly</strong>.
+              Automated invoice workflows, inventory allocations, and transaction auditing, resulting in a <strong>~35% efficiency boost</strong>
+              for commercial sales operations.
             </p>
             <div class="project-impact">
-              <span class="impact-badge"><i class="fa-solid fa-arrow-trend-up"></i> 35% efficiency gain</span>
-              <span class="impact-badge"><i class="fa-solid fa-database"></i> 12K txn/month</span>
+              <span class="impact-badge badge-green"><i class="fa-solid fa-arrow-trend-up"></i> +35% Sales Efficiency</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-receipt"></i> 8K–12K Txn / Month</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-database"></i> High Consistency</span>
             </div>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
               <span class="tech-badge">React</span>
               <span class="tech-badge">PostgreSQL</span>
               <span class="tech-badge">Docker</span>
+              <span class="tech-badge">REST APIs</span>
             </div>
           </div>
         </div>
 
+        <!-- Project 4: Digital Banking Platform -->
         <div class="project-card reveal" style="transition-delay:0.2s">
-          <div class="project-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="project-meta">
+              <span class="project-type">Fintech &amp; Banking</span>
+              <h3 class="project-title">Digital Banking Core Microservices</h3>
+            </div>
+          </div>
           <div class="project-content">
-            <h3 class="project-title">Digital Banking Platform</h3>
-            <p class="project-desc">Microservices for a <strong>digital banking platform</strong> using Domain-Driven
-              Design, achieving <strong>&gt;90% test coverage</strong> across core services with strict security
-              compliance.</p>
+            <p class="project-desc">
+              Designed and implemented secure microservices for a digital banking system utilizing <strong>Domain-Driven Design</strong>.
+              Structured deterministic event handling, comprehensive database transaction isolation, and achieved <strong>&gt;90% test coverage</strong>
+              across all critical financial transactions.
+            </p>
             <div class="project-impact">
-              <span class="impact-badge"><i class="fa-solid fa-shield-halved"></i> 90%+ test coverage</span>
-              <span class="impact-badge"><i class="fa-solid fa-cubes"></i> DDD architecture</span>
+              <span class="impact-badge badge-green"><i class="fa-solid fa-shield-check"></i> &gt;90% Test Coverage</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-network-wired"></i> RabbitMQ Eventing</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-cube"></i> Pure DDD Patterns</span>
             </div>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
-              <span class="tech-badge">RabbitMQ</span>
               <span class="tech-badge">PostgreSQL</span>
               <span class="tech-badge">MongoDB</span>
+              <span class="tech-badge">RabbitMQ</span>
+              <span class="tech-badge">Unit &amp; Mock Testing</span>
             </div>
           </div>
         </div>
 
-        <div class="project-card reveal" style="transition-delay:0.3s">
-          <div class="project-icon"><i class="fa-solid fa-gears"></i></div>
+        <!-- Project 5: Kubernetes CI/CD Pipeline -->
+        <div class="project-card reveal" style="transition-delay:0.25s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="project-meta">
+              <span class="project-type">DevOps &amp; Infrastructure</span>
+              <h3 class="project-title">Kubernetes Microservices CI/CD</h3>
+            </div>
+          </div>
           <div class="project-content">
-            <h3 class="project-title">Microservices CI/CD Pipeline</h3>
-            <p class="project-desc">Containerized <strong>10+ microservices</strong> with Docker and deployed to
-              Kubernetes, slashing deployment time from 45+ minutes to <strong>~8 minutes</strong> via automated
-              pipelines.</p>
+            <p class="project-desc">
+              Containerized <strong>20+ microservices</strong> with Docker and deployed them to production Kubernetes clusters.
+              Engineered automated CI/CD deployment pipelines, slashing release lead times from <strong>45+ minutes to ~8 minutes</strong>
+              with zero downtime deployments.
+            </p>
             <div class="project-impact">
-              <span class="impact-badge"><i class="fa-solid fa-rocket"></i> 82% faster deploys</span>
-              <span class="impact-badge"><i class="fa-solid fa-cubes"></i> 10+ services</span>
+              <span class="impact-badge badge-green"><i class="fa-solid fa-gauge-high"></i> 82% Faster Deployments</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-cubes"></i> 20+ Microservices</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-code-commit"></i> Automated CI/CD</span>
             </div>
             <div class="tech-stack">
               <span class="tech-badge">Docker</span>
               <span class="tech-badge">Kubernetes</span>
-              <span class="tech-badge">CI/CD</span>
+              <span class="tech-badge">CI/CD Pipelines</span>
+              <span class="tech-badge">Linux (Ubuntu)</span>
+              <span class="tech-badge">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Configurable API Engine -->
+        <div class="project-card reveal" style="transition-delay:0.3s">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="project-meta">
+              <span class="project-type">B2B Integration</span>
+              <h3 class="project-title">Configurable Business REST API</h3>
+            </div>
+          </div>
+          <div class="project-content">
+            <p class="project-desc">
+              Architected and delivered a production-ready, client-facing business backend in Go (leveraging Gin, Echo, and Gorm)
+              from scratch within an aggressive 3-month timeline, packaged with Kubernetes-ready container images for rapid scaling.
+            </p>
+            <div class="project-impact">
+              <span class="impact-badge badge-green"><i class="fa-solid fa-check-double"></i> 3-Month Delivery</span>
+              <span class="impact-badge badge-blue"><i class="fa-solid fa-sliders"></i> High Configurability</span>
+              <span class="impact-badge badge-gray"><i class="fa-solid fa-box"></i> K8s-Ready</span>
+            </div>
+            <div class="tech-stack">
               <span class="tech-badge">Go</span>
+              <span class="tech-badge">Gin</span>
+              <span class="tech-badge">Echo</span>
+              <span class="tech-badge">Gorm</span>
+              <span class="tech-badge">Docker</span>
             </div>
           </div>
         </div>
@@ -473,58 +642,126 @@
   </section>
 
   <!-- ── EXPERIENCE ─────────────────────── -->
-  <section id="experience">
+  <section id="experience" class="section-padding section-alt">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">/* Career History */</span>
-        <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
-        <p class="section-desc">6+ years building production-grade systems across fintech, manufacturing, and B2B
-          sectors.</p>
+        <span class="section-eyebrow">Career History</span>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-desc">Over 6 years designing and operating scalable systems across fintech, SaaS ERP, and manufacturing.</p>
         <div class="section-line"></div>
       </div>
 
       <div class="timeline">
 
-        <!-- Job 1 -->
+        <!-- Job 1: BM Technology PLC -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><i class="fa-solid fa-laptop-code"></i></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="job-title">Senior Software Engineer</h3>
+                <div class="job-company">
+                  BM Technology PLC
+                  <span class="company-loc">&middot; Addis Ababa, Ethiopia</span>
+                </div>
+              </div>
+              <span class="job-period badge-current">May 2026 – Present</span>
+            </div>
+            <ul class="job-bullets">
+              <li class="job-bullet">
+                Designed, developed, and maintained high-performance microservices using <strong>Go</strong> for a scalable,
+                multitenant SaaS ERP platform, implementing <strong>row-level security (RLS)</strong> policies to ensure strict
+                data isolation across organizational units.
+              </li>
+              <li class="job-bullet">
+                Implemented and customized <strong>ERPNext modules</strong> to streamline enterprise resource planning operations
+                and improve cross-departmental data flow.
+              </li>
+              <li class="job-bullet">
+                Integrated custom <strong>Go microservices with ERPNext APIs</strong> to seamlessly synchronize data and automate
+                complex multitenant workflows.
+              </li>
+              <li class="job-bullet">
+                Architected event-driven workflows utilizing <strong>outbox patterns</strong> and asynchronous message consumers
+                to reliably publish domain events across distributed services.
+              </li>
+              <li class="job-bullet">
+                Built and maintained highly optimized <strong>RESTful and gRPC</strong> internal communication layers leveraging
+                <strong>Protocol Buffers</strong> for rapid microservice intercommunication.
+              </li>
+              <li class="job-bullet">
+                Optimized SQL queries, indexing strategies, and multi-tenant database transactions, significantly reducing latency
+                and improving data consistency under heavy workloads.
+              </li>
+              <li class="job-bullet">
+                Implemented concurrent and deterministic processing systems using Go routines, channels, mutexes, and robust worker pools.
+              </li>
+              <li class="job-bullet">
+                Wrote comprehensive unit, integration, and load tests to ensure system reliability and production stability.
+              </li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tech-badge">Go</span>
+              <span class="tech-badge">ERPNext</span>
+              <span class="tech-badge">gRPC</span>
+              <span class="tech-badge">Protocol Buffers</span>
+              <span class="tech-badge">PostgreSQL RLS</span>
+              <span class="tech-badge">Outbox Pattern</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2: Phibela Industrial PLC -->
         <div class="timeline-item">
           <div class="timeline-dot"><i class="fa-solid fa-industry"></i></div>
           <div class="timeline-card">
             <div class="timeline-header">
-              <div class="job-title">Software Engineer</div>
-              <div class="job-period">Aug 2021 – Present</div>
-            </div>
-            <div class="job-company">
-              Phibela Industrial PLC
-              <span>· Addis Ababa, Ethiopia</span>
+              <div>
+                <h3 class="job-title">Software Engineer</h3>
+                <div class="job-company">
+                  Phibela Industrial PLC
+                  <span class="company-loc">&middot; Addis Ababa, Ethiopia</span>
+                </div>
+              </div>
+              <span class="job-period">Aug 2021 – May 2026</span>
             </div>
             <ul class="job-bullets">
               <li class="job-bullet">
-                <strong>Real-Time Monitoring System:</strong> Led architecture and full-stack development used across 8+
-                production lines
-                <span class="bullet-metric">→ Reduced manual reporting from ~2 hours to under 5 minutes per shift</span>
+                Led architecture and full-stack development of a <strong>real-time production monitoring and evaluation system</strong>
+                (Go + React + PostgreSQL + WebSocket) used across <strong>8+ production lines</strong>
+                <span class="bullet-metric"><i class="fa-solid fa-arrow-right"></i> Reduced manual reporting time from ~2 hours to under 5 minutes per shift</span>
               </li>
               <li class="job-bullet">
-                <strong>Sales Management Platform:</strong> Spearheaded web-based system processing 8,000–12,000
-                transactions monthly
-                <span class="bullet-metric">→ Increased sales team efficiency by ~35%</span>
+                Integrated <strong>ERPNext</strong> into production and sales workflows to enhance tracking, inventory management,
+                and reporting capabilities.
               </li>
               <li class="job-bullet">
-                <strong>WebSocket Notification System:</strong> Designed real-time alert system for 50+ concurrent users
-                <span class="bullet-metric">→ Delivered sub-second notifications for critical factory events</span>
+                Customized <strong>ERPNext doctypes</strong> and automated data pipelines to synchronize real-time production metrics
+                with central accounting modules.
               </li>
               <li class="job-bullet">
-                <strong>Microservices Infrastructure:</strong> Containerized 20+ services with Docker and Kubernetes
-                <span class="bullet-metric">→ Reduced deployment time from 45+ minutes to ~8 minutes via CI/CD</span>
+                Spearheaded a web-based <strong>sales management system</strong> (Go + React + PostgreSQL) processing
+                <strong>8,000–12,000 transactions monthly</strong>
+                <span class="bullet-metric"><i class="fa-solid fa-arrow-right"></i> Increased sales team efficiency by ~35%</span>
               </li>
-              <li class="job-bullet">Containerized <strong>10+ microservices</strong> with Docker and deployed to
-                Kubernetes, reducing deployment time from 45+ minutes to <strong>~8 minutes</strong> via CI/CD
-                pipelines.</li>
+              <li class="job-bullet">
+                Designed and implemented a real-time WebSocket notification system delivering sub-second alerts to <strong>50+ concurrent users</strong> for critical factory events.
+              </li>
+              <li class="job-bullet">
+                Containerized <strong>20+ microservices</strong> with Docker and deployed to Kubernetes, reducing deployment time from 45+ minutes to ~8 minutes via automated CI/CD pipelines.
+              </li>
+              <li class="job-bullet">
+                Managed internal digital infrastructure, network configurations, and terminal hardware setups to seamlessly support factory software and automated reporting operations.
+              </li>
             </ul>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
               <span class="tech-badge">React</span>
               <span class="tech-badge">PostgreSQL</span>
               <span class="tech-badge">WebSocket</span>
+              <span class="tech-badge">ERPNext</span>
               <span class="tech-badge">Docker</span>
               <span class="tech-badge">Kubernetes</span>
               <span class="tech-badge">CI/CD</span>
@@ -532,25 +769,30 @@
           </div>
         </div>
 
-        <!-- Job 2 -->
+        <!-- Job 3: Two F Times Trading PLC -->
         <div class="timeline-item">
           <div class="timeline-dot"><i class="fa-solid fa-bolt"></i></div>
           <div class="timeline-card">
             <div class="timeline-header">
-              <div class="job-title">Backend Software Engineer (Contract)</div>
-              <div class="job-period">Feb 2021 – May 2021</div>
-            </div>
-            <div class="job-company">
-              Two F Times Trading PLC
-              <span>· Addis Ababa, Ethiopia</span>
+              <div>
+                <h3 class="job-title">Backend Software Engineer (Contract)</h3>
+                <div class="job-company">
+                  Two F Times Trading PLC
+                  <span class="company-loc">&middot; Addis Ababa, Ethiopia</span>
+                </div>
+              </div>
+              <span class="job-period">Feb 2021 – May 2021</span>
             </div>
             <ul class="job-bullets">
-              <li class="job-bullet">Architected and developed highly configurable <strong>RESTful APIs in Go</strong>
-                (Gin, Echo, Gorm) to power responsive, client-facing business solutions.</li>
-              <li class="job-bullet">Containerized backend services with Docker and constructed <strong>Kubernetes-ready
-                  images</strong> enabling rapid and scalable deployments.</li>
-              <li class="job-bullet">Delivered a fully functional, <strong>production-ready backend system from
-                  scratch</strong> within an aggressive 3-month timeline.</li>
+              <li class="job-bullet">
+                Architected and developed highly configurable <strong>RESTful APIs in Go</strong> (leveraging Gin, Echo, and Gorm) to power responsive, client-facing business solutions.
+              </li>
+              <li class="job-bullet">
+                Streamlined the deployment lifecycle by containerizing backend services with Docker and constructing <strong>Kubernetes-ready images</strong>, enabling rapid and scalable deployments.
+              </li>
+              <li class="job-bullet">
+                Successfully delivered a fully functional, production-ready backend system from scratch within an aggressive 3-month timeline.
+              </li>
             </ul>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
@@ -563,33 +805,38 @@
           </div>
         </div>
 
-        <!-- Job 3 -->
+        <!-- Job 4: Milto Labs PLC -->
         <div class="timeline-item">
           <div class="timeline-dot"><i class="fa-solid fa-building-columns"></i></div>
           <div class="timeline-card">
             <div class="timeline-header">
-              <div class="job-title">Backend Software Engineer</div>
-              <div class="job-period">Feb 2020 – Jan 2021</div>
-            </div>
-            <div class="job-company">
-              Milto Labs PLC
-              <span>· Addis Ababa, Ethiopia</span>
+              <div>
+                <h3 class="job-title">Backend Software Engineer</h3>
+                <div class="job-company">
+                  Milto Labs PLC
+                  <span class="company-loc">&middot; Addis Ababa, Ethiopia</span>
+                </div>
+              </div>
+              <span class="job-period">Feb 2020 – Jan 2021</span>
             </div>
             <ul class="job-bullets">
-              <li class="job-bullet">Designed and implemented microservices for a <strong>digital banking
-                  platform</strong> using Domain-Driven Design, Go, RabbitMQ, PostgreSQL, and MongoDB.</li>
-              <li class="job-bullet">Wrote high-performance, well-documented code that consistently passed
-                <strong>strict code reviews and security standards</strong>.
+              <li class="job-bullet">
+                Designed and implemented microservices for a <strong>digital banking platform</strong> using <strong>Domain-Driven Design</strong>, Go, PostgreSQL, and MongoDB.
               </li>
-              <li class="job-bullet">Achieved <strong>&gt;90% test coverage</strong> on core services through
-                comprehensive unit and integration testing.</li>
+              <li class="job-bullet">
+                Wrote high-performance, well-documented code that consistently passed strict code reviews and security standards.
+              </li>
+              <li class="job-bullet">
+                Achieved <strong>&gt;90% test coverage</strong> on core services through comprehensive unit and integration testing utilizing standard Go testing packages and mock architectures.
+              </li>
             </ul>
             <div class="tech-stack">
               <span class="tech-badge">Go</span>
-              <span class="tech-badge">DDD</span>
+              <span class="tech-badge">Domain-Driven Design</span>
               <span class="tech-badge">PostgreSQL</span>
               <span class="tech-badge">MongoDB</span>
               <span class="tech-badge">RabbitMQ</span>
+              <span class="tech-badge">Unit Testing</span>
             </div>
           </div>
         </div>
@@ -599,17 +846,17 @@
   </section>
 
   <!-- ── EDUCATION ──────────────────────── -->
-  <section id="education">
+  <section id="education" class="section-padding">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">// Academic Background</span>
-        <h2 class="section-title">Education &amp; <span class="gradient-text">Foundation</span></h2>
+        <span class="section-eyebrow">Academic Background</span>
+        <h2 class="section-title">Education &amp; Foundation</h2>
         <div class="section-line"></div>
       </div>
 
       <div class="edu-card reveal">
         <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-        <div class="edu-degree">Bachelor of Science in Computer Science</div>
+        <h3 class="edu-degree">Bachelor of Science in Computer Science</h3>
         <div class="edu-school">Addis Ababa University</div>
         <div class="edu-location">Addis Ababa, Ethiopia</div>
         <div class="edu-period">2015 – 2019</div>
@@ -618,58 +865,54 @@
   </section>
 
   <!-- ── CONTACT ────────────────────────── -->
-  <section id="contact">
+  <section id="contact" class="section-padding section-alt">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-eyebrow">/* Get In Touch */</span>
-        <h2 class="section-title">Let's <span class="gradient-text">Work Together</span></h2>
+        <span class="section-eyebrow">Get In Touch</span>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-desc">
+          Interested in discussing a senior engineering role, distributed system architecture, ERPNext integration, or technical consulting? Reach out directly.
+        </p>
         <div class="section-line"></div>
       </div>
 
       <div class="contact-wrapper">
-        <p class="contact-cta-text reveal">
-          Whether you have a role to discuss, a project to collaborate on, or just want to connect —
-          my inbox is always open. I'm particularly interested in opportunities involving
-          <strong>Go, distributed systems, and real-time architectures</strong>.
-        </p>
-
         <div class="contact-cards reveal">
           <a href="mailto:sissay440@gmail.com" class="contact-card">
             <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-card-label">Email</div>
             <div class="contact-card-value">sissay440@gmail.com</div>
           </a>
+
           <a href="tel:+251921459706" class="contact-card">
             <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
             <div class="contact-card-label">Phone</div>
             <div class="contact-card-value">+251 92 145 9706</div>
           </a>
-          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="contact-card">
+
+          <a href="https://linkedin.com/in/sissay-wube" target="_blank" rel="noopener noreferrer" class="contact-card">
             <div class="contact-card-icon"><i class="fa-brands fa-linkedin"></i></div>
             <div class="contact-card-label">LinkedIn</div>
-            <div class="contact-card-value">sissay-wube</div>
+            <div class="contact-card-value">in/sissay-wube</div>
           </a>
         </div>
 
         <div class="social-links reveal">
-          <a href="https://github.com/sissaywube" target="_blank" rel="noopener" class="social-link"
+          <a href="https://github.com/sissaywube" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Visit Sissay Wube's GitHub profile">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
-            </svg>
-            GitHub
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub Profile</span>
           </a>
-          <a href="https://www.linkedin.com/in/sissay-wube" target="_blank" rel="noopener" class="social-link"
+          <a href="https://linkedin.com/in/sissay-wube" target="_blank" rel="noopener noreferrer" class="social-link"
             aria-label="Visit Sissay Wube's LinkedIn profile">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-            LinkedIn
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn Profile</span>
           </a>
-
+          <a href="assets/Resume.pdf" download="Sissay_Wube_CV.pdf" class="social-link"
+            aria-label="Download Sissay Wube Resume PDF">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Download CV (PDF)</span>
+          </a>
         </div>
       </div>
     </div>
@@ -678,8 +921,8 @@
   <!-- ── FOOTER ─────────────────────────── -->
   <footer>
     <div class="container footer-inner">
-      <span>© <span id="current-year">2025</span> <a href="#hero">Sissay Wube</a>. All rights reserved.</span>
-      <span>Built with ❤️ · <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a></span>
+      <span>&copy; <span id="current-year">2026</span> <a href="#hero">Sissay Wube</a>. All rights reserved.</span>
+      <span>Addis Ababa, Ethiopia &middot; <a href="mailto:sissay440@gmail.com">sissay440@gmail.com</a></span>
     </div>
   </footer>
 
