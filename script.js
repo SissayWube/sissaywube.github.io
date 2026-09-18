@@ -3,112 +3,6 @@
    ERPNext-Inspired Theme Management & Interactions
    ============================================ */
 
-// ── Typed Text Effect ──────────────────────
-const typedRoles = [
-  'Go Microservices Architect',
-  'Senior Backend Engineer',
-  'Multitenant SaaS & ERP Specialist',
-  'Distributed Systems Engineer',
-  'DevOps & Kubernetes Practitioner'
-];
-
-let roleIdx = 0;
-let charIdx = 0;
-let isDeleting = false;
-let typedEl;
-
-function typeLoop() {
-  if (!typedEl) return;
-  const current = typedRoles[roleIdx];
-
-  if (!isDeleting) {
-    typedEl.textContent = current.slice(0, charIdx + 1);
-    charIdx++;
-    if (charIdx === current.length) {
-      isDeleting = true;
-      setTimeout(typeLoop, 2200);
-      return;
-    }
-  } else {
-    typedEl.textContent = current.slice(0, charIdx - 1);
-    charIdx--;
-    if (charIdx === 0) {
-      isDeleting = false;
-      roleIdx = (roleIdx + 1) % typedRoles.length;
-    }
-  }
-
-  setTimeout(typeLoop, isDeleting ? 40 : 80);
-}
-
-// ── Particle Canvas ────────────────────────
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas ? canvas.getContext('2d') : null;
-let particles = [];
-let animFrameId;
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function resizeCanvas() {
-  if (!canvas) return;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function getThemeColors() {
-  const isDark = (document.documentElement.getAttribute('data-theme') || 'light') === 'dark';
-  return {
-    isDark,
-    particleColor: isDark ? '96, 165, 250' : '71, 85, 105',
-    lineColor: isDark ? '59, 130, 246' : '27, 102, 201',
-    lineBaseOpacity: isDark ? 0.16 : 0.08,
-    particleAlphaMin: isDark ? 0.15 : 0.07,
-    particleAlphaMax: isDark ? 0.40 : 0.22
-  };
-}
-
-function createParticles() {
-  if (!canvas) return;
-  particles = [];
-  const isMobile = window.innerWidth < 768;
-  const count = Math.floor((canvas.width * canvas.height) / (isMobile ? 32000 : 22000));
-  const colors = getThemeColors();
-
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.5,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      alpha: Math.random() * (colors.particleAlphaMax - colors.particleAlphaMin) + colors.particleAlphaMin,
-      color: colors.particleColor
-    });
-  }
-}
-
-function drawParticles() {
-  if (!ctx || !canvas) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const colors = getThemeColors();
-
-  // Draw connecting lines
-  const maxDist = 125;
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < maxDist) {
-        const opacity = (1 - dist / maxDist) * colors.lineBaseOpacity;
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(${colors.lineColor}, ${opacity})`;
-        ctx.lineWidth = 0.6;
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
-      }
     }
   }
 
@@ -151,13 +45,19 @@ function applyTheme(theme) {
     const isDark = theme === 'dark';
     toggleBtn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  const sunIcon = toggleBtn.querySelector('.icon-sun');
+  const moonIcon = toggleBtn.querySelector('.icon-moon');
+  if (isDark) {
+    if (sunIcon) sunIcon.setAttribute('aria-hidden', 'false');
+    if (moonIcon) moonIcon.setAttribute('aria-hidden', 'true');
+  } else {
+    if (sunIcon) sunIcon.setAttribute('aria-hidden', 'true');
+    if (moonIcon) moonIcon.setAttribute('aria-hidden', 'false');
+  }
   }
 
   // Re-seed particles with updated theme colors
-  if (!prefersReducedMotion && canvas) {
-    createParticles();
   }
-}
 
 function setupThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
@@ -235,18 +135,8 @@ function setupHamburger() {
 
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
-    const spans = hamburger.querySelectorAll('span');
-    if (isOpen) {
-      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      spans.forEach(s => {
-        s.style.transform = '';
-        s.style.opacity = '';
-      });
-    }
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
@@ -327,23 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupRevealObserver();
 
   // Typed text initialization
-  typedEl = document.getElementById('typed-text');
-  if (typedEl) setTimeout(typeLoop, 500);
 
   // Background Canvas
-  if (!prefersReducedMotion && canvas) {
-    resizeCanvas();
-    createParticles();
-    drawParticles();
-
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(animFrameId);
-      resizeCanvas();
-      createParticles();
-      drawParticles();
-    });
-  }
-
+  
   // Scroll events
   window.addEventListener('scroll', handleNavScroll, { passive: true });
   handleNavScroll();
