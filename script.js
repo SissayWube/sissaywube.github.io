@@ -1,29 +1,7 @@
 /* ============================================
    SISSAY WUBE – PORTFOLIO JAVASCRIPT
-   ERPNext-Inspired Theme Management & Interactions
+   Theme Management & Interactions
    ============================================ */
-
-    }
-  }
-
-  // Draw particle dots
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
-    ctx.fill();
-
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < -10) p.x = canvas.width + 10;
-    if (p.x > canvas.width + 10) p.x = -10;
-    if (p.y < -10) p.y = canvas.height + 10;
-    if (p.y > canvas.height + 10) p.y = -10;
-  });
-
-  animFrameId = requestAnimationFrame(drawParticles);
-}
 
 // ── Theme Manager ──────────────────────────
 function applyTheme(theme) {
@@ -45,19 +23,17 @@ function applyTheme(theme) {
     const isDark = theme === 'dark';
     toggleBtn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-  const sunIcon = toggleBtn.querySelector('.icon-sun');
-  const moonIcon = toggleBtn.querySelector('.icon-moon');
-  if (isDark) {
-    if (sunIcon) sunIcon.setAttribute('aria-hidden', 'false');
-    if (moonIcon) moonIcon.setAttribute('aria-hidden', 'true');
-  } else {
-    if (sunIcon) sunIcon.setAttribute('aria-hidden', 'true');
-    if (moonIcon) moonIcon.setAttribute('aria-hidden', 'false');
+    const sunIcon = toggleBtn.querySelector('.icon-sun');
+    const moonIcon = toggleBtn.querySelector('.icon-moon');
+    if (isDark) {
+      if (sunIcon) sunIcon.setAttribute('aria-hidden', 'false');
+      if (moonIcon) moonIcon.setAttribute('aria-hidden', 'true');
+    } else {
+      if (sunIcon) sunIcon.setAttribute('aria-hidden', 'true');
+      if (moonIcon) moonIcon.setAttribute('aria-hidden', 'false');
+    }
   }
-  }
-
-  // Re-seed particles with updated theme colors
-  }
+}
 
 function setupThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
