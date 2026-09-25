@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sissaywube.com/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sissaywube.com/assets/profile.jpg</image:loc>
+      <image:title>Sissay Wube | Senior Software Engineer</image:title>
+      <image:caption>Sissay Wube, Senior Software Engineer specializing in Go, Node.js, TypeScript, and Distributed Systems</image:caption>
+    </image:image>
   </url>
 </urlset>

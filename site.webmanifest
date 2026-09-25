@@ -1,0 +1,21 @@
+{
+  "name": "Sissay Wube | Senior Software Engineer",
+  "short_name": "Sissay Wube",
+  "description": "Portfolio of Sissay Wube – Senior Software Engineer specializing in Go, Node.js, TypeScript, and Distributed Systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "sizes": "400x400",
+      "type": "image/jpeg"
+    }
+  ]
+}
